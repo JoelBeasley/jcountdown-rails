@@ -1,7 +1,7 @@
 jCountdown
 ==========
 
-jCountdown is a jQuery plugin for Rails 3.1 asset pipeline, which displays the number of days/hours/minutes/seconds remaining until the specified date.
+jCountdown is a jQuery plugin for Rails 3 asset pipeline, which displays the number of days/hours/minutes/seconds remaining until the specified date.
 
 ## Installation
 
@@ -45,7 +45,7 @@ Add the following lines to your view:
 
 ``` javascript
 $(document).ready(function() {
-  $("jcountdown").setCountdown({
+  $("#jcountdown").setCountdown({
     //Date for the countdown
     targetDate: '2012-12-23',
     //Labels for days/hours/minutes/seconds,
@@ -58,3 +58,7 @@ $(document).ready(function() {
 ## Copyright
 
 See LICENSE file.
+
+## Contributors
+
+* [Max Riveiro](https://github.com/kavu)
