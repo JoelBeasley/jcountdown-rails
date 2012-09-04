@@ -32,8 +32,6 @@
     @html(html)
 
   $.fn.updateCountdown = (options) ->
-    timer_element = @.first()
-
     now = new Date()
     # Fix for Mobile Safari - see http://stackoverflow.com/a/4623148/45622
     parsed_date = options.targetDate.split(/-/)
@@ -43,22 +41,17 @@
 
     if diff <= 0
       secs = mins = hours = days = 0
-      clearTimeout($.data(timer_element, 'timer')) if $.data(timer_element, 'timer')
+      clearTimeout($.data(@, 'timer')) if $.data(@, 'timer')
     else
       secs = diff % 60
       mins = Math.floor(diff / 60) % 60
       hours = Math.floor(diff / (60 * 60)) % 24
       days = Math.floor(diff / (60 * 60 * 24))
+      $.data(@, 'timer', setTimeout((=>@.updateCountdown(options)), 1000))
 
-      $.data(
-        timer_element,
-        'timer',
-        setTimeout((->timer_element.updateCountdown(options)), 1000)
-      )
-
-    timer_element.find("span.jctdn-days div").html(days)
-    timer_element.find("span.jctdn-hours div").html(if hours > 9 then hours else '0' + hours)
-    timer_element.find("span.jctdn-mins div").html(if mins > 9 then mins else '0' + mins)
-    timer_element.find("span.jctdn-secs div").html(if secs > 9 then secs else '0' + secs)
+    @.find("span.jctdn-days div").html(days)
+    @.find("span.jctdn-hours div").html(if hours > 9 then hours else '0' + hours)
+    @.find("span.jctdn-mins div").html(if mins > 9 then mins else '0' + mins)
+    @.find("span.jctdn-secs div").html(if secs > 9 then secs else '0' + secs)
 
 )(jQuery)
