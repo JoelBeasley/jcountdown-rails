@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
   s.homepage = 'http://github.com/rezwyi/jcountdown-rails'
 
   s.version = '0.2.0'
-  s.summary = 'A simple jQuery countdown for Rails 3.1'
+  s.summary = 'A simple jQuery countdown for Rails 3 asset pipeline'
   s.files = `git ls-files`.split("\n")
 
   s.add_dependency 'jquery-rails'
